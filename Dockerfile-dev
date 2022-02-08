@@ -1,0 +1,6 @@
+FROM openjdk:8-jdk-alpine
+VOLUME /var/log
+EXPOSE 8080
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} spring-base-service.jar
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=dev", "/spring-base-service.jar"]

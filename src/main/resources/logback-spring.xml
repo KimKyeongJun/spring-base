@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="local">
+        <appender name="LOCAL_CONSOLE_POLICY" class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M [%L]-%msg%n
+                </Pattern>
+            </layout>
+        </appender>
+        <logger name="com.zaxxer.hikari">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+            <level value="off"/>
+        </logger>
+        <logger name="io.lettuce">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+            <level value="off"/>
+        </logger>
+        <logger name="org.hibernate.type">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+            <level value="off"/>
+        </logger>
+        <logger name="org.hibernate.engine">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+            <level value="off"/>
+        </logger>
+        <logger name="org.hibernate.type.descriptor">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+            <level value="off"/>
+        </logger>
+        <logger name="org.hibernate.loader">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+            <level value="off"/>
+        </logger>
+    </springProfile>
+
+    <springProfile name="dev">
+        <appender name="INFO_FILE_POLICY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>DEBUG</level>
+            </filter>
+            <file>/var/log/server.log</file>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss} [%-5level] [%thread] [%logger{36}] - %m%n</pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>/var/log/dateLog/%d{yyyy_MM_dd}_%i.storage-service.log</fileNamePattern>
+                <maxFileSize>50MB</maxFileSize>
+                <maxHistory>14</maxHistory>
+                <totalSizeCap>1GB</totalSizeCap>
+            </rollingPolicy>
+        </appender>
+    </springProfile>
+
+    <springProfile name="prd">
+        <appender name="ERROR_FILE_POLICY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>ERROR</level>
+            </filter>
+            <file>/var/log/server.log</file>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss} [%-5level] [%thread] [%logger{36}] - %m%n</pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>/var/log/dateLog/%d{yyyy_MM_dd}_%i.storage-service.log</fileNamePattern>
+                <maxFileSize>50MB</maxFileSize>
+                <maxHistory>14</maxHistory>
+                <totalSizeCap>1GB</totalSizeCap>
+            </rollingPolicy>
+        </appender>
+    </springProfile>
+
+    <root level="DEBUG">
+        <springProfile name="local">
+            <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+        </springProfile>
+        <springProfile name="dev">
+            <appender-ref ref="INFO_FILE_POLICY"/>
+        </springProfile>
+        <springProfile name="prd">
+            <appender-ref ref="ERROR_FILE_POLICY"/>
+        </springProfile>
+    </root>
+</configuration>
