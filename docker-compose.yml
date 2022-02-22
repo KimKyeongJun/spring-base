@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres
+    container_name: postgresql
+    restart: always
+    volumes:
+      - /home/ngs/data/postresql:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "kj123!@#"
+      POSTGRES_DB: "spring-base"
+      POSTGRES_USER: "spring-base"
+      TZ: "Asia/Seoul"

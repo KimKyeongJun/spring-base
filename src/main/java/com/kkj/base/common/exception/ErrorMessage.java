@@ -12,7 +12,7 @@ public enum ErrorMessage implements EnumMapperType {
 
     // COMMON
     INVALID_CODE(400, "C001", "Invalid Code"),
-    RESOURCE_NOT_FOUND(204, "C002", "Resource not found"),
+    RESOURCE_NOT_FOUND(404, "C002", "Resource not found"),
     EXPIRED_CODE(400, "C003", "Expired Code"),
     TEMPORARY_SERVER_ERROR(400, "C004", "Temporary Server Error");
 
