@@ -19,6 +19,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
 
+
+// ThirdParty API 호출을 위한 모듈 Bean Container에 추가
 @Configuration
 @Slf4j
 public class ApiModuleConfig {
