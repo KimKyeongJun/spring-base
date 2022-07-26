@@ -22,7 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("192.168.2.200", "dev.ngsserver.com", "http://localhost:3000", "http://192.168.3.198")
+        registry.addMapping("/**").allowedOrigins("")
                 .allowedMethods(HttpMethod.GET.name(), HttpMethod.POST.name(), HttpMethod.DELETE.name(),
                         HttpMethod.PUT.name(), HttpMethod.HEAD.name())
                 .allowedHeaders("*").allowCredentials(true).maxAge(86400);
