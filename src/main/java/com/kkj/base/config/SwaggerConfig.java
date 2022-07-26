@@ -29,8 +29,8 @@ public class SwaggerConfig implements WebMvcConfigurer {
 	public static final String AUTHORIZATION_HEADER = "Authorization";
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("NGS Storage Service", "NGS Storage API.", "1.0", "Terms of service",
-				new Contact("SQISOFT", "www.sqisoft.com", "ngs.bz@sqisoft.com"), "License of API",
+		return new ApiInfo("Base Service", "Base Service API.", "1.0", "Terms of service",
+				new Contact("Kim KyeongJun", "www.kj-dev.com", "v49011591@gmail.com"), "License of API",
 				"API license URL", Collections.emptyList());
 	}
 
